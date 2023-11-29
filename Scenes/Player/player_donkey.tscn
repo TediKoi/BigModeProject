@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cp6iiamcdfjuj"]
 
 [ext_resource type="Texture2D" uid="uid://7bh5brl2u8f8" path="res://Scenes/Player/donkey_idle.png" id="1_d5ei7"]
-[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_mjgev"]
+[ext_resource type="Script" path="res://Scenes/Player/player_donkey.gd" id="1_glxbm"]
 [ext_resource type="Texture2D" uid="uid://ce0ws4tss0bo8" path="res://Scenes/Player/donkey_walk.png" id="3_p70yk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85byt"]
@@ -37,9 +37,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mricl"]
 radius = 8.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+[node name="Player_Donkey" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
-script = ExtResource("1_mjgev")
+script = ExtResource("1_glxbm")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)

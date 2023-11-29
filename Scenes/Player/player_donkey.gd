@@ -5,10 +5,10 @@ const JUMP_VELOCITY = -400.0
 const ACCELERATION = 100
 
 var direction = Vector2.ZERO
+var gravity = 980
 
 @onready var sprite = $Sprite2D
 
-var gravity = 980
 
 func _physics_process(delta):
 	animations()
@@ -66,3 +66,5 @@ func flip_sprite():
 		sprite.flip_h = false
 	if isLeft:
 		sprite.flip_h = true
+		
+

@@ -1,7 +1,15 @@
 extends Node
 
 @onready var camera_2d = $Camera2D
-@onready var player = $Player
+
+var player: Array
+var current_player: Node2D
 
 func _process(_delta):
-	camera_2d.global_position = player.global_position
+	player = get_tree().get_nodes_in_group("player")
+	if player[0] == null:
+		current_player = player[1]
+	else:
+		current_player = player[0]
+	
+	camera_2d.global_position = current_player.global_position

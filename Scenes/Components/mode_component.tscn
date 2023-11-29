@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmyghrfrkqg37"]
+
+[ext_resource type="Script" path="res://Scenes/Components/mode_component.gd" id="1_ol2c1"]
+
+[node name="ModeComponent" type="Node"]
+script = ExtResource("1_ol2c1")
