@@ -1,8 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp6iiamcdfjuj"]
+[gd_scene load_steps=11 format=3 uid="uid://cp6iiamcdfjuj"]
 
 [ext_resource type="Texture2D" uid="uid://7bh5brl2u8f8" path="res://Scenes/Player/donkey_idle.png" id="1_d5ei7"]
-[ext_resource type="Script" path="res://Scenes/Player/player_donkey.gd" id="1_glxbm"]
+[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_g10hy"]
+[ext_resource type="Texture2D" uid="uid://b1ayq3gfmekhy" path="res://Scenes/Player/donkeytoad_idle.png" id="2_017r3"]
 [ext_resource type="Texture2D" uid="uid://ce0ws4tss0bo8" path="res://Scenes/Player/donkey_walk.png" id="3_p70yk"]
+[ext_resource type="Texture2D" uid="uid://bbx0ptpxg61r" path="res://Scenes/Player/donkeytoad_walk.png" id="3_xvfhl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tw8ns"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_017r3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xvfhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_017r3")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85byt"]
 atlas = ExtResource("3_p70yk")
@@ -35,18 +59,24 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mricl"]
-radius = 8.0
+radius = 9.5
 
-[node name="Player_Donkey" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(2, 2)
-script = ExtResource("1_glxbm")
+script = ExtResource("1_g10hy")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2DToad" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_tw8ns")
+autoplay = "default"
+offset = Vector2(0, -8)
+
+[node name="Sprite2DDonkey" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_jjoc6")
 autoplay = "default"
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -9.5)
 shape = SubResource("CircleShape2D_mricl")
