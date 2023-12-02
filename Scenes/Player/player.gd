@@ -1,8 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
-const MAX_SPEED = 200
+var MAX_SPEED = 200
+const SPRINT_SPEED = 400
+const BASH_DURATION = 0.2
 const JUMP_VELOCITY = -400.0
+const LEAP_VELOCITY = -600.0
 const ACCELERATION = 100
 
 var direction = 0
@@ -12,6 +15,7 @@ var gravity = 980
 
 @onready var sprite_donkey = $Sprite2DDonkey
 @onready var sprite_toad = $Sprite2DToad
+@onready var bash = $Bash
 
 func _ready():
 	sprite_toad.visible = false
@@ -24,6 +28,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, 10)
 	jumping()
 	moving()
+	bashing()
 	mode()
 	move_and_slide()
 	
@@ -36,18 +41,20 @@ func flip_sprite():
 	if isLeft:
 		sprite_toad.flip_h = true
 		sprite_donkey.flip_h = true
+		
+func bashing():
+	if Input.is_action_just_pressed("bash") and isDonkey:
+		bash.start_bash(BASH_DURATION)
+	if bash.is_bashing():
+		velocity.x = direction * 500
+	
 
 func sprint_accelerate():
-	var isRight = direction > 0
-	var isLeft = direction < 0
-	if isRight:
-		velocity.x = move_toward(velocity.x, MAX_SPEED + 200, 20)
-	if isLeft:
-		velocity.x = move_toward(velocity.x, -MAX_SPEED - 200, 20)
+	velocity.x = move_toward(velocity.x, direction * SPRINT_SPEED, 20)
 		
 func moving():
 	direction = Input.get_axis("move_left", "move_right")
-	if direction: 
+	if direction:
 		if Input.is_action_pressed("sprint") and isDonkey:
 			sprint_accelerate()
 		else:
@@ -56,12 +63,7 @@ func moving():
 		velocity.x = move_toward(velocity.x, 0, 30)
 		
 func accelerate():
-	var isRight = direction > 0
-	var isLeft = direction < 0
-	if isRight:
-		velocity.x = move_toward(velocity.x, MAX_SPEED, 20)
-	if isLeft:
-		velocity.x = move_toward(velocity.x, -MAX_SPEED, 20)
+	velocity.x = move_toward(velocity.x, direction * MAX_SPEED, 20)
 		
 func animations():
 	#Animations
@@ -76,11 +78,12 @@ func animations():
 		else:
 			sprite_toad.animation = "default"
 	
-		
-	
+
 func jumping():
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and isDonkey:
 		velocity.y = JUMP_VELOCITY
+	elif Input.is_action_just_pressed("jump") and is_on_floor() and !isDonkey:
+		velocity.y = LEAP_VELOCITY
 
 
 func mode():

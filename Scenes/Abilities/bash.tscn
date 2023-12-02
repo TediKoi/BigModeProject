@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxca6ebt8xy80"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/Bash.gd" id="1_xqs6s"]
+
+[node name="Bash" type="Node"]
+script = ExtResource("1_xqs6s")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
