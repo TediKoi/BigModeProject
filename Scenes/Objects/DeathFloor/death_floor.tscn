@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://1q526ma3hsdd"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/DeathFloor/death_floor.gd" id="1_ctvqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd287"]
+
+[node name="DeathFloor" type="Node2D"]
+script = ExtResource("1_ctvqy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wd287")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

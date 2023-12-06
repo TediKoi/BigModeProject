@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://clr4wsrs3i4q0"]
+[gd_scene load_steps=7 format=3 uid="uid://clr4wsrs3i4q0"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_efai5"]
 [ext_resource type="PackedScene" uid="uid://cp6iiamcdfjuj" path="res://Scenes/Player/player.tscn" id="1_p6ra6"]
 [ext_resource type="PackedScene" uid="uid://dvtu0xo4fakhk" path="res://Scenes/Levels/level_1.tscn" id="2_he43i"]
-[ext_resource type="PackedScene" uid="uid://ch88ulehlrdh7" path="res://Scenes/Objects/wall_of_boxes.tscn" id="5_w15dr"]
+[ext_resource type="PackedScene" uid="uid://ch88ulehlrdh7" path="res://Scenes/Objects/WallOfBoxes/wall_of_boxes.tscn" id="3_1ef5a"]
+[ext_resource type="PackedScene" uid="uid://1q526ma3hsdd" path="res://Scenes/Objects/DeathFloor/death_floor.tscn" id="4_dpfae"]
 
 [sub_resource type="GDScript" id="GDScript_slkew"]
 
@@ -12,8 +13,12 @@ script = ExtResource("1_efai5")
 
 [node name="Level1" parent="." instance=ExtResource("2_he43i")]
 
-[node name="WallOfBoxes" parent="." instance=ExtResource("5_w15dr")]
-position = Vector2(68, 268)
+[node name="WallOfBoxes" parent="." instance=ExtResource("3_1ef5a")]
+position = Vector2(70, 270)
+
+[node name="DeathFloor" parent="." instance=ExtResource("4_dpfae")]
+position = Vector2(2922, 937)
+scale = Vector2(400, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_p6ra6")]
 position = Vector2(-27, 238)

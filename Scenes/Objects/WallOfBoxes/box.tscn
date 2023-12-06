@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbbgnovbllg38"]
+[gd_scene load_steps=11 format=3 uid="uid://3700cpqv3ueo"]
 
-[ext_resource type="Script" path="res://Scenes/Objects/box.gd" id="1_dxj75"]
-[ext_resource type="Texture2D" uid="uid://reajiyrussuv" path="res://Scenes/Objects/box.png" id="1_vis5v"]
+[ext_resource type="Script" path="res://Scenes/Objects/WallOfBoxes/box.gd" id="1_fuu14"]
+[ext_resource type="Texture2D" uid="uid://reajiyrussuv" path="res://Scenes/Objects/WallOfBoxes/box.png" id="2_u2v4d"]
 
 [sub_resource type="Animation" id="Animation_wxvtt"]
 length = 0.001
@@ -82,7 +82,7 @@ size = Vector2(24, 20)
 position = Vector2(0, -9)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_dxj75")
+script = ExtResource("1_fuu14")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -94,7 +94,7 @@ libraries = {
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_n2tja")
-texture = ExtResource("1_vis5v")
+texture = ExtResource("2_u2v4d")
 one_shot = true
 fixed_fps = 60
 
@@ -107,7 +107,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("1_vis5v")
+texture = ExtResource("2_u2v4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_s3thb")

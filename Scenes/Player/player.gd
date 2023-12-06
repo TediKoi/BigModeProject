@@ -12,6 +12,7 @@ var direction = 0
 var gravity = 980
 
 @export var isDonkey = true
+@export var isFinished = false
 
 @onready var sprite_donkey = $Sprite2DDonkey
 @onready var sprite_toad = $Sprite2DToad
@@ -21,16 +22,18 @@ func _ready():
 	sprite_toad.visible = false
 
 func _physics_process(delta):
-	animations()
-	flip_sprite()
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		velocity.x = move_toward(velocity.x, 0, 10)
-	jumping()
-	moving()
-	bashing()
-	mode()
-	move_and_slide()
+	if !isFinished:
+		animations()
+		flip_sprite()
+		if not is_on_floor():
+			velocity.y += gravity * delta
+			velocity.x = move_toward(velocity.x, 0, 10)
+		jumping()
+		moving()
+		bashing()
+		mode()
+		move_and_slide()
+	
 	
 func flip_sprite():
 	var isRight = direction > 0

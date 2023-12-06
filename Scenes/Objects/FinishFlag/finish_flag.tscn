@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjeugi702jauj"]
+
+[ext_resource type="Texture2D" uid="uid://bpmqqfmehyf1y" path="res://Scenes/Objects/FinishFlag/tile_0111.png" id="1_ow21s"]
+[ext_resource type="Script" path="res://Scenes/Objects/FinishFlag/finish_flag.gd" id="1_ykuqq"]
+[ext_resource type="Texture2D" uid="uid://0jf0shb6obdr" path="res://Scenes/Objects/FinishFlag/tile_0112.png" id="2_20cq0"]
+[ext_resource type="Texture2D" uid="uid://vpxh0u16puvv" path="res://Scenes/Objects/FinishFlag/tile_0131.png" id="3_s6178"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxiu5"]
+size = Vector2(23, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l2bpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ow21s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_20cq0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="FinishFlag" type="Node2D"]
+position = Vector2(6, -28)
+script = ExtResource("1_ykuqq")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 9)
+shape = SubResource("RectangleShape2D_uxiu5")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l2bpc")
+autoplay = "default"
+frame_progress = 0.568354
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, 18)
+texture = ExtResource("3_s6178")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
