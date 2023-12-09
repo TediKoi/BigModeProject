@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://clr4wsrs3i4q0"]
+[gd_scene load_steps=10 format=3 uid="uid://clr4wsrs3i4q0"]
 
 [ext_resource type="Script" path="res://Scenes/Main Worlds/main.gd" id="1_i7oio"]
 [ext_resource type="PackedScene" uid="uid://dvtu0xo4fakhk" path="res://Scenes/Levels/level_1.tscn" id="2_foxt3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1q526ma3hsdd" path="res://Scenes/Objects/DeathFloor/death_floor.tscn" id="4_rql08"]
 [ext_resource type="PackedScene" uid="uid://cp6iiamcdfjuj" path="res://Scenes/Player/player.tscn" id="5_1uy51"]
 [ext_resource type="PackedScene" uid="uid://cu1wswvb1mn77" path="res://Scenes/UI/victory_screen.tscn" id="6_v6d0l"]
+[ext_resource type="PackedScene" uid="uid://burmn4i4tft0w" path="res://Scenes/UI/death_screen.tscn" id="7_1x2jl"]
 [ext_resource type="PackedScene" uid="uid://5n282nxp757y" path="res://Scenes/UI/timer.tscn" id="7_87pmu"]
 
 [sub_resource type="GDScript" id="GDScript_slkew"]
@@ -36,6 +37,8 @@ drag_bottom_margin = 0.05
 script = SubResource("GDScript_slkew")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
+
+[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("7_1x2jl")]
 
 [node name="VictoryScreen" parent="CanvasLayer" instance=ExtResource("6_v6d0l")]
 

@@ -1,16 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu1wswvb1mn77"]
+[gd_scene load_steps=9 format=3 uid="uid://burmn4i4tft0w"]
 
-[ext_resource type="Shader" path="res://Scenes/UI/blur.gdshader" id="1_q03w3"]
-[ext_resource type="Script" path="res://Scenes/UI/victory_screen.gd" id="2_ne1fg"]
+[ext_resource type="Shader" path="res://Scenes/UI/blur.gdshader" id="1_bkpbr"]
+[ext_resource type="Script" path="res://Scenes/UI/death_screen.gd" id="2_oljch"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fyg6t"]
-shader = ExtResource("1_q03w3")
+shader = ExtResource("1_bkpbr")
 shader_parameter/blur = 0.0
 shader_parameter/brightness = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_u758x"]
 font_size = 60
-font_color = Color(0.25098, 0.74902, 1, 1)
+font_color = Color(0.839216, 0.203922, 0.313726, 1)
 outline_size = 21
 outline_color = Color(0.207843, 0.0509804, 0.0431373, 1)
 shadow_size = 0
@@ -140,7 +140,7 @@ _data = {
 "Unpause": SubResource("Animation_iygte")
 }
 
-[node name="VictoryScreen" type="ColorRect"]
+[node name="DeathScreen" type="ColorRect"]
 process_mode = 3
 material = SubResource("ShaderMaterial_fyg6t")
 anchors_preset = 15
@@ -148,7 +148,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_ne1fg")
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_oljch")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 process_mode = 2
@@ -177,7 +178,7 @@ theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "VICTORY"
+text = "YOU DEAD"
 label_settings = SubResource("LabelSettings_u758x")
 horizontal_alignment = 1
 
@@ -188,11 +189,6 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "Retry"
-
-[node name="Next Level" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 45
-text = "Next Level"
 
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -205,5 +201,4 @@ libraries = {
 }
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Next Level" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
