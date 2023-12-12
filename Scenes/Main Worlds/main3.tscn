@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwc3gf7vd5do6"]
+
+[ext_resource type="Script" path="res://Scenes/Main Worlds/main3.gd" id="1_uehov"]
+[ext_resource type="PackedScene" uid="uid://bjb7galp4o6yy" path="res://Scenes/Levels/level3.tscn" id="2_w70hl"]
+[ext_resource type="PackedScene" uid="uid://1q526ma3hsdd" path="res://Scenes/Objects/DeathFloor/death_floor.tscn" id="4_en4fa"]
+[ext_resource type="PackedScene" uid="uid://cp6iiamcdfjuj" path="res://Scenes/Player/player.tscn" id="5_ch7yo"]
+[ext_resource type="PackedScene" uid="uid://burmn4i4tft0w" path="res://Scenes/UI/death_screen.tscn" id="6_0x35r"]
+[ext_resource type="Script" path="res://Scenes/Main Worlds/Pivot.gd" id="7_240bv"]
+[ext_resource type="PackedScene" uid="uid://5n282nxp757y" path="res://Scenes/UI/timer.tscn" id="8_0gyfr"]
+[ext_resource type="PackedScene" uid="uid://dtrfl4l0naf1t" path="res://Scenes/Abilities/tongue.tscn" id="8_lcn45"]
+
+[sub_resource type="GDScript" id="GDScript_slkew"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_uehov")
+
+[node name="Level2" parent="." instance=ExtResource("2_w70hl")]
+
+[node name="DeathFloor" parent="." instance=ExtResource("4_en4fa")]
+position = Vector2(121, 703)
+scale = Vector2(400, 1)
+
+[node name="Player" parent="." instance=ExtResource("5_ch7yo")]
+position = Vector2(2, -85)
+
+[node name="Pivot" type="Node2D" parent="Player"]
+position = Vector2(12, -7.5)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("7_240bv")
+
+[node name="Tongue" parent="Player/Pivot" instance=ExtResource("8_lcn45")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -50)
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+script = SubResource("GDScript_slkew")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
+
+[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("6_0x35r")]
+
+[node name="Timer" parent="CanvasLayer" instance=ExtResource("8_0gyfr")]
+
+[connection signal="hooked" from="Player/Pivot/Tongue" to="Player" method="_on_tongue_hooked"]

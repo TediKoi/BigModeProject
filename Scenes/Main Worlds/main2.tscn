@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxl5vg0ykihrq"]
+
+[ext_resource type="Script" path="res://Scenes/Main Worlds/main2.gd" id="1_qiifp"]
+[ext_resource type="PackedScene" uid="uid://bpydtaqlwdxra" path="res://Scenes/Levels/level2.tscn" id="2_gkj2t"]
+[ext_resource type="PackedScene" uid="uid://ch88ulehlrdh7" path="res://Scenes/Objects/WallOfBoxes/wall_of_boxes.tscn" id="3_td61u"]
+[ext_resource type="PackedScene" uid="uid://bjeugi702jauj" path="res://Scenes/Objects/FinishFlag/finish_flag.tscn" id="4_784yr"]
+[ext_resource type="PackedScene" uid="uid://1q526ma3hsdd" path="res://Scenes/Objects/DeathFloor/death_floor.tscn" id="4_q857g"]
+[ext_resource type="PackedScene" uid="uid://cp6iiamcdfjuj" path="res://Scenes/Player/player.tscn" id="5_vwq4p"]
+[ext_resource type="PackedScene" uid="uid://burmn4i4tft0w" path="res://Scenes/UI/death_screen.tscn" id="6_gjxpi"]
+[ext_resource type="PackedScene" uid="uid://cu1wswvb1mn77" path="res://Scenes/UI/victory_screen.tscn" id="7_ff6yy"]
+[ext_resource type="PackedScene" uid="uid://5n282nxp757y" path="res://Scenes/UI/timer.tscn" id="8_5kiy3"]
+[ext_resource type="Script" path="res://Scenes/Main Worlds/Pivot.gd" id="10_skwxd"]
+[ext_resource type="PackedScene" uid="uid://dtrfl4l0naf1t" path="res://Scenes/Abilities/tongue.tscn" id="11_1cijx"]
+
+[sub_resource type="GDScript" id="GDScript_slkew"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_qiifp")
+
+[node name="Level2" parent="." instance=ExtResource("2_gkj2t")]
+
+[node name="DeathFloor" parent="." instance=ExtResource("4_q857g")]
+position = Vector2(2922, 937)
+scale = Vector2(400, 1)
+
+[node name="WallOfBoxes" parent="." instance=ExtResource("3_td61u")]
+position = Vector2(4510, 780)
+
+[node name="FinishFlag" parent="." instance=ExtResource("4_784yr")]
+position = Vector2(4678, 751)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
+
+[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("6_gjxpi")]
+
+[node name="VictoryScreen" parent="CanvasLayer" instance=ExtResource("7_ff6yy")]
+
+[node name="Timer" parent="CanvasLayer" instance=ExtResource("8_5kiy3")]
+
+[node name="Player" parent="." instance=ExtResource("5_vwq4p")]
+unique_name_in_owner = true
+position = Vector2(56, -47)
+
+[node name="Pivot" type="Node2D" parent="Player"]
+position = Vector2(12.5, -8.5)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("10_skwxd")
+
+[node name="Tongue" parent="Player/Pivot" instance=ExtResource("11_1cijx")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -50)
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+script = SubResource("GDScript_slkew")
+
+[connection signal="hooked" from="Player/Pivot/Tongue" to="Player" method="_on_tongue_hooked"]

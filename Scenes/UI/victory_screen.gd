@@ -17,11 +17,24 @@ func pause():
 
 
 func _on_retry_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Main Worlds/main.tscn")
+	var main = get_tree().get_root().get_node("Main")
+	if main.world_num == 1:
+		get_tree().change_scene_to_file("res://Scenes/Main Worlds/main.tscn")
+	elif main.world_num == 2:
+		get_tree().change_scene_to_file("res://Scenes/Main Worlds/main2.tscn")
+	elif main.world_num == 3:
+		get_tree().change_scene_to_file("res://Scenes/Main Worlds/main3.tscn")
 	unpause()
 
 
 func _on_quit_pressed():
 	get_tree().quit()
-	
 
+
+func _on_next_level_pressed():
+	var main = get_tree().get_root().get_node("Main")
+	if main.world_num == 1:
+		get_tree().change_scene_to_file("res://Scenes/Main Worlds/main2.tscn")
+	elif main.world_num == 2:
+		get_tree().change_scene_to_file("res://Scenes/Main Worlds/main3.tscn")
+	unpause()

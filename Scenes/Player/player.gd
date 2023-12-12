@@ -10,13 +10,16 @@ const ACCELERATION = 100
 
 var direction = 0
 var gravity = 980
+var force = 300
 
 @export var isDonkey = true
 @export var isFinished = false
 
+@onready var running_particles = $GPUParticles2D
 @onready var sprite_donkey = $Sprite2DDonkey
 @onready var sprite_toad = $Sprite2DToad
 @onready var bash = $Bash
+@onready var pivot = $Pivot
 
 func _ready():
 	sprite_toad.visible = false
@@ -25,23 +28,30 @@ func _physics_process(delta):
 	if !isFinished:
 		animations()
 		flip_sprite()
-		if not is_on_floor():
-			velocity.y += gravity * delta
-			velocity.x = move_toward(velocity.x, 0, 10)
+		_gravity(delta)
 		jumping()
 		moving()
 		bashing()
 		mode()
 		move_and_slide()
 	
-	
+
+func _gravity(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		velocity.x = move_toward(velocity.x, 0, 10)
+
 func flip_sprite():
 	var isRight = direction > 0
 	var isLeft = direction < 0
 	if isRight:
+		pivot.position.x = 11
+		running_particles.process_material.direction.x = -1
 		sprite_toad.flip_h = false
 		sprite_donkey.flip_h = false
 	if isLeft:
+		pivot.position.x = -11
+		running_particles.process_material.direction.x = 1
 		sprite_toad.flip_h = true
 		sprite_donkey.flip_h = true
 		
@@ -54,14 +64,17 @@ func bashing():
 
 func sprint_accelerate():
 	velocity.x = move_toward(velocity.x, direction * SPRINT_SPEED, 20)
-		
+
+
 func moving():
 	direction = Input.get_axis("move_left", "move_right")
 	if direction:
 		if Input.is_action_pressed("sprint") and isDonkey:
 			sprint_accelerate()
+			running_particles.emitting = true
 		else:
 			accelerate()
+			running_particles.emitting = false
 	else:
 		velocity.x = move_toward(velocity.x, 0, 30)
 		
@@ -94,3 +107,10 @@ func mode():
 		isDonkey = !isDonkey
 		sprite_donkey.visible = isDonkey
 		sprite_toad.visible = !isDonkey
+		
+		
+
+func _on_tongue_hooked(hooked_position):
+	await get_tree().create_timer(0.2).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", hooked_position, 0.4)

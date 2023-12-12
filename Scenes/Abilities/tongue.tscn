@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtrfl4l0naf1t"]
+
+[ext_resource type="Texture2D" uid="uid://clofmdtiyqskg" path="res://Scenes/Abilities/tongue.png" id="1_jgro0"]
+[ext_resource type="Script" path="res://Tongue.gd" id="2_bx8go"]
+
+[node name="Tongue" type="Sprite2D"]
+texture_repeat = 2
+rotation = -1.5708
+texture = ExtResource("1_jgro0")
+region_enabled = true
+region_rect = Rect2(13.838, -0.148, 4.324, 0)
+script = ExtResource("2_bx8go")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 300)
