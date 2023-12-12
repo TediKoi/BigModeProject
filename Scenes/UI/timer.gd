@@ -1,4 +1,5 @@
 extends Control
+class_name TimerNode
 
 @onready var label = $PanelContainer/MarginContainer/Label
 @onready var timer = 0.0

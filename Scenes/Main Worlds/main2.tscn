@@ -20,14 +20,14 @@ script = ExtResource("1_qiifp")
 [node name="Level2" parent="." instance=ExtResource("2_gkj2t")]
 
 [node name="DeathFloor" parent="." instance=ExtResource("4_q857g")]
-position = Vector2(2922, 937)
+position = Vector2(2893, 1227)
 scale = Vector2(400, 1)
 
 [node name="WallOfBoxes" parent="." instance=ExtResource("3_td61u")]
-position = Vector2(4510, 780)
+position = Vector2(4521, 931)
 
 [node name="FinishFlag" parent="." instance=ExtResource("4_784yr")]
-position = Vector2(4678, 751)
+position = Vector2(4635, 910)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
 
