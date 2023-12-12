@@ -1,5 +1,5 @@
 extends ColorRect
-class_name VictoryScreen
+class_name WinScreen
 
 @onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var retry_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Retry
@@ -29,12 +29,3 @@ func _on_retry_pressed():
 
 func _on_quit_pressed():
 	get_tree().change_scene_to_file("res://Scenes/UI/menu.tscn")
-
-
-func _on_next_level_pressed():
-	var main = get_tree().get_root().get_node("Main")
-	if main.world_num == 1:
-		get_tree().change_scene_to_file("res://Scenes/Main Worlds/main2.tscn")
-	elif main.world_num == 2:
-		get_tree().change_scene_to_file("res://Scenes/Main Worlds/main3.tscn")
-	unpause()

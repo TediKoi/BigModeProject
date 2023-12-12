@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://r5lyvbt1bm4s"]
 
 [ext_resource type="Shader" path="res://Scenes/UI/blur.gdshader" id="1_mfjlj"]
-[ext_resource type="Script" path="res://Scenes/UI/victory_screen.gd" id="2_ftduo"]
+[ext_resource type="Script" path="res://Scenes/UI/win_screen.gd" id="2_esids"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fyg6t"]
 shader = ExtResource("1_mfjlj")
@@ -148,7 +148,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_ftduo")
+script = ExtResource("2_esids")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 process_mode = 2
@@ -189,11 +189,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "Retry"
 
-[node name="Next Level" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 45
-text = "Next Level"
-
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
@@ -205,5 +200,4 @@ libraries = {
 }
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Next Level" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

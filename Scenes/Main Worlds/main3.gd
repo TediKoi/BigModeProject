@@ -1,7 +1,7 @@
 extends Node
 
 @onready var camera_2d = $Camera2D
-@onready var victory_screen = $CanvasLayer/VictoryScreen
+@onready var win_screen = $CanvasLayer/WinScreen
 @onready var death_screen = $CanvasLayer/DeathScreen
 
 
@@ -10,7 +10,7 @@ var current_player: Node2D
 var world_num: int = 3
 
 func _ready():
-	victory_screen.unpause()
+	win_screen.unpause()
 	death_screen.death_unpause()
 
 func _process(_delta):
