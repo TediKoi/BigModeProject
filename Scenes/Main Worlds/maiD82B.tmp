@@ -27,11 +27,11 @@ scale = Vector2(400, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("7_87pmu")]
-
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("7_1x2jl")]
 
 [node name="VictoryScreen" parent="CanvasLayer" instance=ExtResource("6_v6d0l")]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("7_87pmu")]
 
 [node name="Player" parent="." instance=ExtResource("5_1uy51")]
 unique_name_in_owner = true

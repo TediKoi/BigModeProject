@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ibfurolviey"]
+
+[ext_resource type="SpriteFrames" uid="uid://desep7otto2lh" path="res://Scenes/Player/player.tres" id="1_dbc7w"]
+[ext_resource type="Script" path="res://Scenes/Abilities/bash_ghost.gd" id="1_h7ojd"]
+
+[node name="BashGhost" type="AnimatedSprite2D"]
+position = Vector2(221, 153)
+sprite_frames = ExtResource("1_dbc7w")
+script = ExtResource("1_h7ojd")

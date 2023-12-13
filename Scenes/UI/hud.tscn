@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://5n282nxp757y"]
+
+[ext_resource type="Script" path="res://Scenes/UI/hud.gd" id="1_oclx0"]
+[ext_resource type="Texture2D" uid="uid://ra5jg0y2348q" path="res://Scenes/Abilities/bash.png" id="2_th834"]
+
+[sub_resource type="Curve" id="Curve_igu4m"]
+_data = [Vector2(0, 0.315789), 0.0, 0.0, 0, 0, Vector2(0.508403, 0.536842), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_crf10"]
+curve = SubResource("Curve_igu4m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ua8wv"]
+emission_shape = 3
+emission_box_extents = Vector3(22, 5, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_crf10")
+color = Color(0.47451, 0.560784, 0.85098, 1)
+hue_variation_min = -0.14
+hue_variation_max = 0.11
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("1_oclx0")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_right = 67.5
+offset_bottom = 58.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="Bash" type="Sprite2D" parent="PanelContainer/MarginContainer"]
+position = Vector2(553.5, 520)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_th834")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PanelContainer/MarginContainer/Bash"]
+position = Vector2(-0.800018, 30.3999)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_ua8wv")
+lifetime = 0.25
+one_shot = true

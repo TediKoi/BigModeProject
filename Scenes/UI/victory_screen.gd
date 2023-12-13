@@ -6,10 +6,10 @@ class_name VictoryScreen
 @onready var quit_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit
 @onready var label_2 = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label2
 
-var timer: TimerNode
+var timer: Hud
 
 func _ready():
-	timer = get_tree().get_first_node_in_group("canvas_layer").get_node("Timer") as TimerNode
+	timer = get_tree().get_first_node_in_group("canvas_layer").get_node("HUD") as Hud
 
 func unpause():
 	animator.play("Unpause")

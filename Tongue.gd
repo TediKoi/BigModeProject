@@ -2,10 +2,12 @@ extends Sprite2D
 
 @onready var ray_cast_2d = $RayCast2D
 var distance: float = 300.0
-
+var player: Player
 
 signal hooked(hooked_position)
 
+func _ready():
+	player = get_parent().get_parent()
 
 func _process(_delta):
 	hook()
@@ -20,7 +22,7 @@ func interpolate(length, duration = 0.2):
 	
 
 func hook():
-	if Input.is_action_pressed("hook"):
+	if Input.is_action_pressed("hook") and !player.isDonkey:
 		interpolate(await check_collision(), 0.2)
 		await get_tree().create_timer(0.2).timeout
 		reverse_interpolation()

@@ -15,10 +15,11 @@ var force = 300
 @export var isDonkey = true
 @export var isFinished = false
 
+@onready var jump_particles = $JumpParticles
 @onready var running_particles = $GPUParticles2D
 @onready var sprite_donkey = $Sprite2DDonkey
 @onready var sprite_toad = $Sprite2DToad
-@onready var bash = $Bash
+@onready var bash = $Bash as Bash
 @onready var pivot = $Pivot
 
 func _ready():
@@ -56,8 +57,8 @@ func flip_sprite():
 		sprite_donkey.flip_h = true
 		
 func bashing():
-	if Input.is_action_just_pressed("bash") and isDonkey:
-		bash.start_bash(BASH_DURATION)
+	if Input.is_action_just_pressed("bash") and isDonkey and bash.canBash and !bash.is_bashing():
+		bash.start_bash(sprite_donkey, BASH_DURATION)
 	if bash.is_bashing():
 		velocity.x = direction * 500
 	
@@ -98,8 +99,10 @@ func animations():
 func jumping():
 	if Input.is_action_just_pressed("jump") and is_on_floor() and isDonkey:
 		velocity.y = JUMP_VELOCITY
+		jump_particles.restart()
 	elif Input.is_action_just_pressed("jump") and is_on_floor() and !isDonkey:
 		velocity.y = LEAP_VELOCITY
+		jump_particles.restart()
 
 
 func mode():

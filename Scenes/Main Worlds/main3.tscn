@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cp6iiamcdfjuj" path="res://Scenes/Player/player.tscn" id="5_ch7yo"]
 [ext_resource type="PackedScene" uid="uid://burmn4i4tft0w" path="res://Scenes/UI/death_screen.tscn" id="6_0x35r"]
 [ext_resource type="Script" path="res://Scenes/Main Worlds/Pivot.gd" id="7_240bv"]
-[ext_resource type="PackedScene" uid="uid://5n282nxp757y" path="res://Scenes/UI/timer.tscn" id="8_0gyfr"]
+[ext_resource type="PackedScene" uid="uid://5n282nxp757y" path="res://Scenes/UI/hud.tscn" id="8_0gyfr"]
 [ext_resource type="PackedScene" uid="uid://r5lyvbt1bm4s" path="res://Scenes/UI/win_screen.tscn" id="8_fteid"]
 [ext_resource type="PackedScene" uid="uid://dtrfl4l0naf1t" path="res://Scenes/Abilities/tongue.tscn" id="8_lcn45"]
 
@@ -43,10 +43,10 @@ script = SubResource("GDScript_slkew")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
 
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_0gyfr")]
+
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("6_0x35r")]
 
 [node name="WinScreen" parent="CanvasLayer" instance=ExtResource("8_fteid")]
-
-[node name="Timer" parent="CanvasLayer" instance=ExtResource("8_0gyfr")]
 
 [connection signal="hooked" from="Player/Pivot/Tongue" to="Player" method="_on_tongue_hooked"]

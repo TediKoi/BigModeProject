@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://desep7otto2lh"]
+
+[ext_resource type="Texture2D" uid="uid://7bh5brl2u8f8" path="res://Scenes/Player/donkey_idle.png" id="1_k687e"]
+[ext_resource type="Texture2D" uid="uid://ce0ws4tss0bo8" path="res://Scenes/Player/donkey_walk.png" id="2_ydwwq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85byt"]
+atlas = ExtResource("2_ydwwq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j14wl"]
+atlas = ExtResource("1_k687e")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k687e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85byt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j14wl")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]

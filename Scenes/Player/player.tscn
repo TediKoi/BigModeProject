@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp6iiamcdfjuj"]
+[gd_scene load_steps=12 format=3 uid="uid://cp6iiamcdfjuj"]
 
-[ext_resource type="Texture2D" uid="uid://7bh5brl2u8f8" path="res://Scenes/Player/donkey_idle.png" id="1_d5ei7"]
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_g10hy"]
 [ext_resource type="Texture2D" uid="uid://b1ayq3gfmekhy" path="res://Scenes/Player/donkeytoad_idle.png" id="2_017r3"]
 [ext_resource type="PackedScene" uid="uid://dxca6ebt8xy80" path="res://Scenes/Abilities/bash.tscn" id="2_rcc8n"]
-[ext_resource type="Texture2D" uid="uid://ce0ws4tss0bo8" path="res://Scenes/Player/donkey_walk.png" id="3_p70yk"]
 [ext_resource type="Texture2D" uid="uid://bbx0ptpxg61r" path="res://Scenes/Player/donkeytoad_walk.png" id="3_xvfhl"]
+[ext_resource type="SpriteFrames" uid="uid://desep7otto2lh" path="res://Scenes/Player/player.tres" id="5_e0i5m"]
 
 [sub_resource type="Curve" id="Curve_u7knw"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -26,6 +25,18 @@ orbit_velocity_max = 0.0
 scale_min = 2.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_21mkd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wfk5m"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 50.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 3.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 4.0
+scale_max = 4.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tw8ns"]
 animations = [{
@@ -49,36 +60,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_85byt"]
-atlas = ExtResource("3_p70yk")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j14wl"]
-atlas = ExtResource("1_d5ei7")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jjoc6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_d5ei7")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85byt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j14wl")
-}],
-"loop": true,
-"name": &"run",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_mricl"]
 radius = 9.5
 
@@ -89,11 +70,21 @@ collision_mask = 3
 script = ExtResource("1_g10hy")
 
 [node name="Bash" parent="." instance=ExtResource("2_rcc8n")]
+position = Vector2(0, -9)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_464ui")
+
+[node name="JumpParticles" type="GPUParticles2D" parent="."]
+scale = Vector2(17.9841, -4.76376)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_wfk5m")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
 
 [node name="Sprite2DToad" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
@@ -103,7 +94,7 @@ offset = Vector2(0, -8)
 
 [node name="Sprite2DDonkey" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
-sprite_frames = SubResource("SpriteFrames_jjoc6")
+sprite_frames = ExtResource("5_e0i5m")
 autoplay = "default"
 offset = Vector2(0, -8)
 
