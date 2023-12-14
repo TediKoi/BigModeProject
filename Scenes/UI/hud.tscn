@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://5n282nxp757y"]
+[gd_scene load_steps=8 format=3 uid="uid://5n282nxp757y"]
 
 [ext_resource type="Script" path="res://Scenes/UI/hud.gd" id="1_oclx0"]
 [ext_resource type="Texture2D" uid="uid://ra5jg0y2348q" path="res://Scenes/Abilities/bash.png" id="2_th834"]
 [ext_resource type="Texture2D" uid="uid://b1ayq3gfmekhy" path="res://Scenes/Player/donkeytoad_idle.png" id="3_idew6"]
+[ext_resource type="Texture2D" uid="uid://clofmdtiyqskg" path="res://Scenes/Abilities/tongue.png" id="4_ajhn4"]
 
 [sub_resource type="Curve" id="Curve_igu4m"]
 _data = [Vector2(0, 0.315789), 0.0, 0.0, 0, 0, Vector2(0.508403, 0.536842), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -111,6 +112,34 @@ texture = ExtResource("3_idew6")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ModeControl/ModeChange"]
 position = Vector2(-0.25, 11.5)
 scale = Vector2(0.510873, 0.471479)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_ua8wv")
+lifetime = 0.25
+one_shot = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -123.0
+offset_right = -130.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Tongue" type="Sprite2D" parent="Control"]
+position = Vector2(33, 4)
+scale = Vector2(2, 2)
+texture = ExtResource("4_ajhn4")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control/Tongue"]
+position = Vector2(-0.25, 11.5)
+scale = Vector2(0.599314, 0.548313)
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_ua8wv")

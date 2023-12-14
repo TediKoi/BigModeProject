@@ -1,8 +1,10 @@
 extends Sprite2D
+class_name Tongue
 
 @onready var ray_cast_2d = $RayCast2D
 var distance: float = 300.0
 var player: Player
+var canHook = true
 
 signal hooked(hooked_position)
 
@@ -22,13 +24,19 @@ func interpolate(length, duration = 0.2):
 	
 
 func hook():
-	if Input.is_action_pressed("hook") and !player.isDonkey:
+	if Input.is_action_pressed("hook") and !player.isDonkey and canHook:
 		interpolate(await check_collision(), 0.2)
 		await get_tree().create_timer(0.2).timeout
 		reverse_interpolation()
 		
 func reverse_interpolation():
 	interpolate(0, 0.4)
+	start_cooldown()
+	
+func start_cooldown():
+	canHook = false
+	await get_tree().create_timer(2.0).timeout
+	canHook = true
 
 func check_collision():
 	await get_tree().create_timer(0.1).timeout
