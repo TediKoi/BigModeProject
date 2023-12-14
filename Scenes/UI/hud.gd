@@ -3,12 +3,20 @@ class_name Hud
 
 @onready var label = $PanelContainer/MarginContainer/Label
 @onready var timer = 0.0
-@onready var bash_cd_particle = $PanelContainer/MarginContainer/Bash/GPUParticles2D
-@onready var bash_sprite = $PanelContainer/MarginContainer/Bash
+@onready var bash_cd_particle = $BashControl/Bash/GPUParticles2D
+@onready var bash_sprite = $BashControl/Bash
+@onready var mode_change = $ModeControl/ModeChange
+@onready var mode_change_particle = $ModeControl/ModeChange/GPUParticles2D
+
+var donkey_sprite = preload("res://Scenes/Player/donkey_idle.png")
+var toad_sprite = preload("res://Scenes/Player/donkeytoad_idle.png")
+
 
 var bash: Bash
+var player: Player
 
 func _ready():
+	player = get_parent().get_parent().get_node("Player")
 	bash = get_parent().get_parent().get_node("Player").get_child(0)
 
 func _process(delta):
@@ -16,6 +24,7 @@ func _process(delta):
 	label.text = format_time(timer)
 	
 	bash_cd_particle_effect()
+	on_mode_change()
 	
 func format_time(seconds: float):
 	var minutes = floor(seconds / 60)
@@ -28,5 +37,16 @@ func bash_cd_particle_effect():
 	else:
 		bash_sprite.modulate = Color(1, 1, 1, 0)
 		bash_cd_particle.restart()
+		
+func on_mode_change():
+	if player.canChange:
+		mode_change.modulate = Color(1, 1, 1, 1)
+	else:
+		mode_change.modulate = Color(1, 1, 1, 0)
+		mode_change_particle.restart()
+		if player.isDonkey:
+			mode_change.texture = toad_sprite
+		else:
+			mode_change.texture = donkey_sprite
 		
 	

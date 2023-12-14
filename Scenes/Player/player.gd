@@ -14,6 +14,7 @@ var force = 300
 
 @export var isDonkey = true
 @export var isFinished = false
+@export var canChange = true
 
 @onready var jump_particles = $JumpParticles
 @onready var running_particles = $GPUParticles2D
@@ -106,12 +107,14 @@ func jumping():
 
 
 func mode():
-	if Input.is_action_just_pressed("change_mode"):
+	if Input.is_action_just_pressed("change_mode") and canChange:
+		canChange = false
 		isDonkey = !isDonkey
 		sprite_donkey.visible = isDonkey
 		sprite_toad.visible = !isDonkey
-		
-		
+		await get_tree().create_timer(1.0).timeout
+		canChange = true
+	
 
 func _on_tongue_hooked(hooked_position):
 	await get_tree().create_timer(0.2).timeout
