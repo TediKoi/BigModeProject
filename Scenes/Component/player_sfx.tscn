@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddykr2tef3k"]
+
+[ext_resource type="Script" path="res://Scenes/Component/player_sfx.gd" id="1_hqwv2"]
+[ext_resource type="AudioStream" uid="uid://ka0410lqx4dg" path="res://Assets/Audio/horse footstepmp3.mp3" id="1_mpq3w"]
+[ext_resource type="AudioStream" uid="uid://cpadbi043w3so" path="res://Assets/Audio/horse sprinting.mp3" id="3_w31mg"]
+[ext_resource type="AudioStream" uid="uid://j2ow05xoqvop" path="res://Assets/Audio/bash.mp3" id="4_0snan"]
+[ext_resource type="AudioStream" uid="uid://cj8fdt6hgi3y" path="res://Assets/Audio/donkey jump.mp3" id="5_4wjof"]
+[ext_resource type="AudioStream" uid="uid://cvlnt8mobq7fq" path="res://Assets/Audio/tongue.mp3" id="6_dxewc"]
+[ext_resource type="AudioStream" uid="uid://bowdil1b4xev5" path="res://Assets/Audio/box breaking.mp3" id="7_ckjbv"]
+[ext_resource type="AudioStream" uid="uid://dn3ni5uknyk2h" path="res://Assets/Audio/frog croak.mp3" id="8_b58wi"]
+[ext_resource type="AudioStream" uid="uid://bn0btjh6r35ce" path="res://Assets/Audio/donkey sound.mp3" id="9_jfhgd"]
+
+[node name="PlayerSFX" type="Node2D"]
+script = ExtResource("1_hqwv2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="HorseFootstep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_mpq3w")
+
+[node name="HorseSprinting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_w31mg")
+volume_db = 11.0
+
+[node name="Bash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0snan")
+volume_db = 3.0
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4wjof")
+
+[node name="Tongue" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_dxewc")
+
+[node name="BoxBreak" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ckjbv")
+volume_db = 6.0
+
+[node name="ToadCroak" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_b58wi")
+volume_db = 4.245
+
+[node name="DonkeySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_jfhgd")
+volume_db = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

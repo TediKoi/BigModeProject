@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bowdil1b4xev5"
+path="res://.godot/imported/box breaking.mp3-a69debf82b512ab2fee8f8fccc5b21ea.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/box breaking.mp3"
+dest_files=["res://.godot/imported/box breaking.mp3-a69debf82b512ab2fee8f8fccc5b21ea.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

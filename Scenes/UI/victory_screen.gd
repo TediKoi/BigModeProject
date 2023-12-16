@@ -5,11 +5,17 @@ class_name VictoryScreen
 @onready var retry_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Retry
 @onready var quit_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit
 @onready var label_2 = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label2
+@onready var victory_sfx = $AudioStreamPlayer2D
 
 var timer: Hud
+var player: Player
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player")
 	timer = get_tree().get_first_node_in_group("canvas_layer").get_node("HUD") as Hud
+	
+func _process(_delta):
+	victory_sfx.global_position = player.global_position
 
 func unpause():
 	animator.play("Unpause")
@@ -18,6 +24,8 @@ func unpause():
 	
 func pause():
 	animator.play("Pause")
+	victory_sfx.play()
+	print("play")
 	get_tree().paused = true
 	visible = true
 	label_2.text = timer.label.text

@@ -187,4 +187,5 @@ texture_region_size = Vector2i(18, 18)
 18:4/0 = 0
 
 [resource]
+tile_size = Vector2i(18, 18)
 sources/0 = SubResource("TileSetAtlasSource_i2nas")

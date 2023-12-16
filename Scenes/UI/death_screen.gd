@@ -4,6 +4,11 @@ class_name DeathScreen
 @onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var retry_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Retry
 @onready var quit_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit
+@onready var death_sfx = $AudioStreamPlayer2D
+
+func _process(_delta):
+	var player = get_tree().get_first_node_in_group("player")
+	death_sfx.global_position = player.global_position
 
 func death_unpause():
 	animator.play("Unpause")
@@ -12,6 +17,7 @@ func death_unpause():
 	
 func death_pause():
 	animator.play("Pause")
+	death_sfx.play()
 	get_tree().paused = true
 	visible = true
 

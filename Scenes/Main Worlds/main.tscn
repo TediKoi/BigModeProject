@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://clr4wsrs3i4q0"]
+[gd_scene load_steps=13 format=3 uid="uid://clr4wsrs3i4q0"]
 
 [ext_resource type="Script" path="res://Scenes/Main Worlds/main1.gd" id="1_0yli2"]
+[ext_resource type="PackedScene" uid="uid://crgtb5wnqkheh" path="res://Scenes/Component/music_player.tscn" id="2_fj30r"]
 [ext_resource type="PackedScene" uid="uid://dvtu0xo4fakhk" path="res://Scenes/Levels/level_1.tscn" id="2_foxt3"]
 [ext_resource type="PackedScene" uid="uid://ch88ulehlrdh7" path="res://Scenes/Objects/WallOfBoxes/wall_of_boxes.tscn" id="3_boypc"]
 [ext_resource type="PackedScene" uid="uid://1q526ma3hsdd" path="res://Scenes/Objects/DeathFloor/death_floor.tscn" id="4_rql08"]
@@ -16,14 +17,96 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_0yli2")
 
+[node name="MusicPlayer" parent="." instance=ExtResource("2_fj30r")]
+
 [node name="Level1" parent="." instance=ExtResource("2_foxt3")]
 
-[node name="WallOfBoxes" parent="." instance=ExtResource("3_boypc")]
+[node name="WallOfBoxesNode" type="Node" parent="."]
+
+[node name="WallOfBoxes" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
 position = Vector2(65, 323)
 
+[node name="WallOfBoxes2" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(1245, 394)
+
+[node name="WallOfBoxes3" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(3352, 517)
+
+[node name="WallOfBoxes4" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(5593, 517)
+
+[node name="WallOfBoxes5" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(5853, 516)
+
+[node name="WallOfBoxes6" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(6077, 520)
+
+[node name="WallOfBoxes7" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(6303, 521)
+
+[node name="WallOfBoxes8" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(6539, 520)
+
+[node name="WallOfBoxes9" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(8567, 143)
+
+[node name="WallOfBoxes10" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9537, 607)
+
+[node name="WallOfBoxes11" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9586, 606)
+
+[node name="WallOfBoxes12" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9636, 609)
+
+[node name="WallOfBoxes13" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9684, 605)
+
+[node name="WallOfBoxes14" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9728, 605)
+
+[node name="WallOfBoxes15" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9773, 605)
+
+[node name="WallOfBoxes16" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9822, 605)
+
+[node name="WallOfBoxes17" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(9877, 605)
+
+[node name="WallOfBoxes18" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(10276, 610)
+
+[node name="WallOfBoxes19" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(10953, 733)
+
+[node name="WallOfBoxes20" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(11011, 732)
+
+[node name="WallOfBoxes21" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(11704, 853)
+
+[node name="WallOfBoxes22" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(11812, 859)
+
+[node name="WallOfBoxes23" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(11943, 858)
+
+[node name="WallOfBoxes24" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(12078, 857)
+
+[node name="WallOfBoxes25" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(11842, 532)
+
+[node name="WallOfBoxes26" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(11962, 531)
+
+[node name="WallOfBoxes27" parent="WallOfBoxesNode" instance=ExtResource("3_boypc")]
+position = Vector2(12836, 806)
+
 [node name="DeathFloor" parent="." instance=ExtResource("4_rql08")]
-position = Vector2(2922, 937)
-scale = Vector2(400, 1)
+position = Vector2(8561, 1377)
+scale = Vector2(1000, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
 

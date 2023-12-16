@@ -43,9 +43,9 @@ func bash_cd_particle_effect():
 		bash_cd_particle.restart()
 		
 func on_tongue():
-	if tongue.canHook:
+	if tongue.canHook and !player.isDonkey:
 		tongue_sprite.modulate = Color(1, 1, 1, 1)
-	elif !tongue.canHook:
+	else:
 		tongue_sprite.modulate = Color(1, 1, 1, 0)
 		tongue_particle.restart()
 		

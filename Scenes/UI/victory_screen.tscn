@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cu1wswvb1mn77"]
+[gd_scene load_steps=11 format=3 uid="uid://cu1wswvb1mn77"]
 
 [ext_resource type="Shader" path="res://Scenes/UI/blur.gdshader" id="1_q03w3"]
 [ext_resource type="Script" path="res://Scenes/UI/victory_screen.gd" id="2_ne1fg"]
+[ext_resource type="AudioStream" uid="uid://n1kvtsqhligv" path="res://Assets/Audio/victory.mp3" id="3_bcyjg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fyg6t"]
 shader = ExtResource("1_q03w3")
@@ -213,6 +214,10 @@ text = "Quit"
 libraries = {
 "": SubResource("AnimationLibrary_iubjv")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bcyjg")
+volume_db = 7.0
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Next Level" to="." method="_on_next_level_pressed"]

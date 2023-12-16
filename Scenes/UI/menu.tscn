@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://duvstpfy2gc0r"]
+[gd_scene load_steps=4 format=3 uid="uid://duvstpfy2gc0r"]
 
 [ext_resource type="Script" path="res://Scenes/UI/menu.gd" id="1_w7m58"]
+[ext_resource type="AudioStream" uid="uid://bgh8pxlxh731j" path="res://Assets/Audio/Adventure.mp3" id="2_ajad3"]
+[ext_resource type="Texture2D" uid="uid://lf7lw32v8rvl" path="res://Assets/donkey mode title.png" id="2_qg0ms"]
 
 [node name="Menu" type="Control"]
 process_mode = 3
@@ -11,6 +13,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w7m58")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1390, 781)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_qg0ms")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ajad3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

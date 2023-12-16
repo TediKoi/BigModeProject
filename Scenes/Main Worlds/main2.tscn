@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxl5vg0ykihrq"]
+[gd_scene load_steps=14 format=3 uid="uid://dxl5vg0ykihrq"]
 
 [ext_resource type="Script" path="res://Scenes/Main Worlds/main2.gd" id="1_qiifp"]
 [ext_resource type="PackedScene" uid="uid://bpydtaqlwdxra" path="res://Scenes/Levels/level2.tscn" id="2_gkj2t"]
+[ext_resource type="PackedScene" uid="uid://crgtb5wnqkheh" path="res://Scenes/Component/music_player.tscn" id="2_l4o2i"]
 [ext_resource type="PackedScene" uid="uid://ch88ulehlrdh7" path="res://Scenes/Objects/WallOfBoxes/wall_of_boxes.tscn" id="3_td61u"]
 [ext_resource type="PackedScene" uid="uid://bjeugi702jauj" path="res://Scenes/Objects/FinishFlag/finish_flag.tscn" id="4_784yr"]
 [ext_resource type="PackedScene" uid="uid://1q526ma3hsdd" path="res://Scenes/Objects/DeathFloor/death_floor.tscn" id="4_q857g"]
@@ -17,17 +18,36 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_qiifp")
 
+[node name="MusicPlayer" parent="." instance=ExtResource("2_l4o2i")]
+
 [node name="Level2" parent="." instance=ExtResource("2_gkj2t")]
 
 [node name="DeathFloor" parent="." instance=ExtResource("4_q857g")]
-position = Vector2(2893, 1227)
-scale = Vector2(400, 1)
+position = Vector2(2935, 924)
+scale = Vector2(800, 1)
 
-[node name="WallOfBoxes" parent="." instance=ExtResource("3_td61u")]
-position = Vector2(4521, 931)
+[node name="WallOfBoxesNode" type="Node" parent="."]
+
+[node name="WallOfBoxes" parent="WallOfBoxesNode" instance=ExtResource("3_td61u")]
+position = Vector2(4035, -40)
+
+[node name="WallOfBoxes2" parent="WallOfBoxesNode" instance=ExtResource("3_td61u")]
+position = Vector2(5430, 105)
+
+[node name="WallOfBoxes3" parent="WallOfBoxesNode" instance=ExtResource("3_td61u")]
+position = Vector2(5868, 174)
+
+[node name="WallOfBoxes4" parent="WallOfBoxesNode" instance=ExtResource("3_td61u")]
+position = Vector2(7126, 284)
+
+[node name="WallOfBoxes5" parent="WallOfBoxesNode" instance=ExtResource("3_td61u")]
+position = Vector2(7124, 177)
+
+[node name="WallOfBoxes6" parent="WallOfBoxesNode" instance=ExtResource("3_td61u")]
+position = Vector2(8836, -3)
 
 [node name="FinishFlag" parent="." instance=ExtResource("4_784yr")]
-position = Vector2(4635, 910)
+position = Vector2(9193, -62)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["canvas_layer"]]
 
